@@ -1,0 +1,4 @@
+2026-01-15 10:35:39,338 [WARNING] ACL DROP: [TCP] 127.0.0.1:52930 -> 127.0.0.1:5000 - No matching allow rule.
+2026-01-15 10:35:39,343 [ERROR] Firewall Processing Error: 403 Forbidden: Access denied by Firewall.
+2026-01-15 10:35:45,504 [WARNING] ACL DROP: [TCP] 127.0.0.1:52944 -> 127.0.0.1:5000 - No matching allow rule.
+2026-01-15 10:35:45,504 [ERROR] Firewall Processing Error: 403 Forbidden: Access denied by Firewall.
