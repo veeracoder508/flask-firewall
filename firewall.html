@@ -9,127 +9,200 @@
 </head>
 <body id="top">
 
-<main class="markdown-body">
-    <p>A firewall is a network security tool that creates a barrier between internal assets and the external internet. A firewall filters traffic, admitting approved data packets while excluding malicious traffic. It also helps with access control by approving verified identities and keeping out everyone else.</p>
+<nav class="top-nav">
+    <div class="nav-brand">
+        <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="24" height="24" fill="currentColor" style="color: var(--color-accent-fg);">
+            <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13Z"></path>
+        </svg>
+        <span>SecDocs</span>
+    </div>
 
-    <p>Every organization should protect its applications and data with a robust firewall. But how does a firewall work, and what are the different ways that firewalls filter traffic?</p>
+    <div class="nav-brand">
+        <span></span>
+    </div>
 
-    <p>This article will explain what goes on behind the firewall. We will also look at the major filtering techniques, including packet filtering, stateful inspection, and proxy services. At the end of the article, you will be well-placed to choose the right security tools for your organization.</p>
+    <div>
+        <span>flask-firewall»firewall</span>
+    </div>
 
-    <h1 id="key-takeaways">Key takeaways</h1>
-    <ul>
-        <li>Firewalls create an essential barrier, filtering network traffic to block malicious attempts while allowing legitimate data.</li>
-        <li>Different firewall types, from packet filters to Next-Generation Firewalls (NGFWs), offer varying levels of inspection and protection.</li>
-        <li>Both hardware and software firewalls play crucial roles, with hardware protecting networks and software securing individual devices.</li>
-        <li>While firewalls are vital, they function best as part of a comprehensive security system alongside other tools like antivirus and IAM.</li>
-        <li>Effective firewall implementation requires careful planning, balancing security needs with considerations like speed, cost, and scalability.</li>
-    </ul>
+    <div class="nav-search">
+        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#050505"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
+        <input type="text" class="search-input" placeholder="Search documentation...">
+    </div>
+</nav>
 
-    <h2 id="understanding-firewalls">Understanding firewalls</h2>
-    <p><strong>Modern organizations exist in an environment full of digital threats.</strong> Every week brings news of new data breaches or ransomware attacks. Governments constantly introduce new regulations to protect data, adding new penalties for companies with poor security systems.</p>
-    <p>In this context, network access is a critical corporate priority. Companies can suffer massive financial losses if they lose control of their digital perimeter. This makes it more important than ever to put in place effective firewall protection.</p>
+<div class="content-wrapper">
 
-    <h2 id="what-is-a-firewall">What is a firewall?</h2>
-    <p>A firewall is a network security system that <strong>monitors and controls incoming and outgoing network traffic based on predetermined security rules.</strong> A properly configured firewall allows verified users to access the network freely while denying access to unapproved devices.</p>
-    <p>It blocks many critical cybersecurity threats, such as DDoS bots and malware. While most effective when combined with antivirus software, threat detection technology, and access management systems, no organization can truly do without some form of firewall. Understanding how different firewall types vary is crucial for robust protection.</p>
-
-    <h2 id="purpose">The purpose of firewalls</h2>
-    <p>In architecture, firewalls are barriers that contain fires, stopping blazes from moving between floors or rooms. The same principle applies when discussing what makes a digital firewall work. <strong>Firewalls are hardware or software tools that block threats and limit access to network settings.</strong></p>
+    <main class="markdown-body">
+        <p>A firewall is a network security tool that creates a barrier between internal assets and the external internet. A firewall filters traffic, admitting approved data packets while excluding malicious traffic. It also helps with access control by approving verified identities and keeping out everyone else.</p>
     
-    <img src="image.png" alt="Firewall architecture diagram" style="max-width: 100%; height: auto; margin-bottom: 16px;">
-
-    <p>Firewalls are <strong>the first barrier threats face when trying to access an organization's network perimeter.</strong> They form the outer skin of network architecture, repelling most malicious agents before they can enter the network environment.</p>
-
-    <p>To carry out this role, <strong>a firewall inspects all traffic crossing the network boundary.</strong> But instead of waving traffic through, the firewall has to decide whether traffic is legitimate or not.</p>
-
-    <p>In this way, the firewall acts a little like nightclub security staff. If traffic has a ticket and passes security checks, it can enter the club. If not, there's no chance of gaining access.</p>
+        <p>Every organization should protect its applications and data with a robust firewall. But how does a firewall work, and what are the different ways that firewalls filter traffic?</p>
     
-    <img src="image-1.png" alt="Firewall security staff analogy" style="max-width: 100%; height: auto; margin-bottom: 16px;">
-
-    <p>Advanced types of firewalls have a few other functions besides filtering. For instance, they may gather data and provide threat reports to improve security. Some include load balancing to regulate network traffic. And others feature threat-neutralization tools. But <strong>filtering is the major firewall</strong> function and the core ability of every good firewall.</p>
-
-    <h1 id="filtering-techniques">How firewalls filter traffic</h1>
-    <p>The best starting point for answering the question of how does a firewall work is separating hardware firewalls and software firewalls.</p>
-
-    <h2 id="hardware">Hardware firewalls</h2>
-    <p>Hardware firewalls are independent of the devices they protect. A hardware firewall will usually feature a separate appliance such as a broadband router that can connect to large numbers of network devices. Protection scales easily. This makes hardware firewalls a popular choice for defending on-premises networks.</p>
-
-    <h2 id="software">Software firewalls</h2>
-    <p>Software firewalls are installed on the devices being protected. Windows Defender is the most common example, but there are many alternative providers. Software firewalls require installation and updating and protect a single device. But users can easily customize their filtering settings with a software firewall, making them a more precise solution.</p>
-
-    <h2 id="packet-filtering">Packet filtering</h2>
-    <p>Packet filtering firewalls are the oldest and simplest types of firewalls. A packet filtering firewall can be hardware or software-based, and will usually be installed at switches or network routers.</p>
-    <p><strong>Packet filtering assesses the surface of data packets.</strong> Packets are segments of data created by transfer protocols when they dismantle files and reassemble them at destination devices. Every data packet has a header. This header includes various pieces of information that packet-filtering firewalls can use to allow or deny access.</p>
+        <p>This article will explain what goes on behind the firewall. We will also look at the major filtering techniques, including packet filtering, stateful inspection, and proxy services. At the end of the article, you will be well-placed to choose the right security tools for your organization.</p>
     
-    <p>Data inspected by packet filtering firewalls include:</p>
-    <ul>
-        <li>Internet Protocol (IP) address information</li>
-        <li>Source and destination ports of incoming data</li>
-        <li>Transfer protocols being used in the transfer</li>
-    </ul>
-
-    <p>When incoming traffic arrives at a packet-filtering firewall, the appliance gathers as much header information as possible. It then <strong>compares this information against pre-established security rules</strong>. Any data packet that satisfies these security rules is admitted. If not, the packet filter firewall will deny access and the transmission is canceled.</p>
-
-    <h2 id="circuit-level">Circuit-level gateways</h2>
-    <p>Circuit-level gateways <strong>focus on data transfer protocols instead of the packet header.</strong> In most cases, this involves checking the Transfer Control Protocol (TCP) handshake.</p>
-
-    <h2 id="stateful-inspection">Stateful inspection</h2>
-    <p><strong>Stateful inspection firewalls use information about the state of data transfers when making decisions.</strong> In this setting, state refers to the context in which transfers occur. This includes much more information than packet headers can provide.</p>
+        <h1 id="key-takeaways">Key takeaways</h1>
+        <ul>
+            <li>Firewalls create an essential barrier, filtering network traffic to block malicious attempts while allowing legitimate data.</li>
+            <li>Different firewall types, from packet filters to Next-Generation Firewalls (NGFWs), offer varying levels of inspection and protection.</li>
+            <li>Both hardware and software firewalls play crucial roles, with hardware protecting networks and software securing individual devices.</li>
+            <li>While firewalls are vital, they function best as part of a comprehensive security system alongside other tools like antivirus and IAM.</li>
+            <li>Effective firewall implementation requires careful planning, balancing security needs with considerations like speed, cost, and scalability.</li>
+        </ul>
     
-    <p>A stateful inspection firewall will usually carry out two filtering operations:</p>
-    <ul>
-        <li><strong>Packet inspection.</strong> Stateful inspection checks every packet entering the network.</li>
-        <li><strong>TCP handshake verification.</strong> Firewalls verify that each stage of the TCP handshake is followed properly.</li>
-    </ul>
+        <h2 id="understanding-firewalls">Understanding firewalls</h2>
+        <p><strong>Modern organizations exist in an environment full of digital threats.</strong> Every week brings news of new data breaches or ransomware attacks. Governments constantly introduce new regulations to protect data, adding new penalties for companies with poor security systems.</p>
+        <p>In this context, network access is a critical corporate priority. Companies can suffer massive financial losses if they lose control of their digital perimeter. This makes it more important than ever to put in place effective firewall protection.</p>
+    
+        <h2 id="what-is-a-firewall">What is a firewall?</h2>
+        <p>A firewall is a network security system that <strong>monitors and controls incoming and outgoing network traffic based on predetermined security rules.</strong> A properly configured firewall allows verified users to access the network freely while denying access to unapproved devices.</p>
+        <p>It blocks many critical cybersecurity threats, such as DDoS bots and malware. While most effective when combined with antivirus software, threat detection technology, and access management systems, no organization can truly do without some form of firewall. Understanding how different firewall types vary is crucial for robust protection.</p>
+    
+        <h2 id="purpose">The purpose of firewalls</h2>
+        <p>In architecture, firewalls are barriers that contain fires, stopping blazes from moving between floors or rooms. The same principle applies when discussing what makes a digital firewall work. <strong>Firewalls are hardware or software tools that block threats and limit access to network settings.</strong></p>
+        
+        <img src="image.png" alt="Firewall architecture diagram" style="max-width: 100%; height: auto; margin-bottom: 16px;">
+    
+        <p>Firewalls are <strong>the first barrier threats face when trying to access an organization's network perimeter.</strong> They form the outer skin of network architecture, repelling most malicious agents before they can enter the network environment.</p>
+    
+        <p>To carry out this role, <strong>a firewall inspects all traffic crossing the network boundary.</strong> But instead of waving traffic through, the firewall has to decide whether traffic is legitimate or not.</p>
+    
+        <p>In this way, the firewall acts a little like nightclub security staff. If traffic has a ticket and passes security checks, it can enter the club. If not, there's no chance of gaining access.</p>
+        
+        <img src="image-1.png" alt="Firewall security staff analogy" style="max-width: 100%; height: auto; margin-bottom: 16px;">
+    
+        <p>Advanced types of firewalls have a few other functions besides filtering. For instance, they may gather data and provide threat reports to improve security. Some include load balancing to regulate network traffic. And others feature threat-neutralization tools. But <strong>filtering is the major firewall</strong> function and the core ability of every good firewall.</p>
+    
+        <h1 id="filtering-techniques">How firewalls filter traffic</h1>
+        <p>The best starting point for answering the question of how does a firewall work is separating hardware firewalls and software firewalls.</p>
+    
+        <h2 id="hardware">Hardware firewalls</h2>
+        <p>Hardware firewalls are independent of the devices they protect. A hardware firewall will usually feature a separate appliance such as a broadband router that can connect to large numbers of network devices. Protection scales easily. This makes hardware firewalls a popular choice for defending on-premises networks.</p>
+    
+        <h2 id="software">Software firewalls</h2>
+        <p>Software firewalls are installed on the devices being protected. Windows Defender is the most common example, but there are many alternative providers. Software firewalls require installation and updating and protect a single device. But users can easily customize their filtering settings with a software firewall, making them a more precise solution.</p>
+    
+        <h2 id="packet-filtering">Packet filtering</h2>
+        <p>Packet filtering firewalls are the oldest and simplest types of firewalls. A packet filtering firewall can be hardware or software-based, and will usually be installed at switches or network routers.</p>
+        <p><strong>Packet filtering assesses the surface of data packets.</strong> Packets are segments of data created by transfer protocols when they dismantle files and reassemble them at destination devices. Every data packet has a header. This header includes various pieces of information that packet-filtering firewalls can use to allow or deny access.</p>
+        
+        <p>Data inspected by packet filtering firewalls include:</p>
+        <ul>
+            <li>Internet Protocol (IP) address information</li>
+            <li>Source and destination ports of incoming data</li>
+            <li>Transfer protocols being used in the transfer</li>
+        </ul>
+    
+        <p>When incoming traffic arrives at a packet-filtering firewall, the appliance gathers as much header information as possible. It then <strong>compares this information against pre-established security rules</strong>. Any data packet that satisfies these security rules is admitted. If not, the packet filter firewall will deny access and the transmission is canceled.</p>
+    
+        <h2 id="circuit-level">Circuit-level gateways</h2>
+        <p>Circuit-level gateways <strong>focus on data transfer protocols instead of the packet header.</strong> In most cases, this involves checking the Transfer Control Protocol (TCP) handshake.</p>
+    
+        <h2 id="stateful-inspection">Stateful inspection</h2>
+        <p><strong>Stateful inspection firewalls use information about the state of data transfers when making decisions.</strong> In this setting, state refers to the context in which transfers occur. This includes much more information than packet headers can provide.</p>
+        
+        <p>A stateful inspection firewall will usually carry out two filtering operations:</p>
+        <ul>
+            <li><strong>Packet inspection.</strong> Stateful inspection checks every packet entering the network.</li>
+            <li><strong>TCP handshake verification.</strong> Firewalls verify that each stage of the TCP handshake is followed properly.</li>
+        </ul>
+    
+        <h2 id="proxy-services">Proxy services</h2>
+        <p>Also called application level gateways, a proxy service firewall stands between network devices and the external internet. A proxy firewall is a separate gateway with a distinct IP address. This means that until proxy firewalls approve access, data has no direct connection with internal assets.</p>
+        <p>Proxy firewalls apply handshake and packet filtering as described above. <strong>But they may add deep packet inspection (DPI)</strong> to the process. DPI examines data payloads within packets. This can expose infected packets and neutralize malware that would otherwise pass unnoticed.</p>
+    
+        <h2 id="nat-filtering">NAT filtering</h2>
+        <p>Network Address Translation (NAT) firewalls are another option when filtering traffic. In NAT systems all network devices connect to a single gateway. Local devices have separate private IP addresses, but they share the IP address of the gateway.</p>
+    
+        <h2 id="ngfw">Next-generation firewalls</h2>
+        <p>Next-generation firewalls (NGFWs) are the most up-to-date option when defending a private network. They are often called multilayer firewalls as they <strong>inspect traffic between OSI layers 2-7.</strong></p>
+    
+        <h1 id="threat-protection">How exactly does a firewall protect data?</h1>
+        <p>Data on your private network requires protection from external attackers. This applies whether data is held locally on company servers or stored in cloud containers. And the first step in protecting data is adding firewall filters to screen out malicious actors.</p>
+    
+        <ul>
+            <li><strong>Denial-of-Service:</strong> Distributed denial-of-service attacks mobilize huge quantities of bots to flood targeted systems with network traffic. Bots continue to make access requests while hiding their original identity. Servers cannot verify the connection, but they continue to send authentication requests. Eventually, the target is taken offline. Smart firewalls protect your network by detecting DDoS floods before the attack becomes critical. This reduces the risk of downtime and damage to vital network resources.</li><br>
+            <li><strong>Spam:</strong>Spam can also flood network users with useless messages or - worse - malicious software. These links can lead to malware infections and ransomware attacks. Both threats can cripple network operations. A good firewall will filter spam from legitimate traffic and screen emails before users can click dangerous links.</li><br>
+            <li><strong>Backdoors:</strong> Important network applications or operating systems may include backdoors that allow unauthorized access. These loopholes can lead to application hijacking and data theft. Companies often fail to apply patches as backdoors are identified. Firewalls defend your network by screening out unverified users. Hackers will have to work far harder to gain access to compromised apps.</li><br>
+            <li><strong>Remote hijackings:</strong>Sometimes, third parties may gain remote access to network devices. This is usually a legitimate task for maintenance purposes. But hackers can also gain remote access via partner organizations or poorly secured remote work tools. Firewalls check device data, adding an extra set of filters. This should make it harder to capture devices remotely.</li><br>
+            <li><strong>Viruses:</strong> Viruses arrive on an internal network via conventional traffic and can sometimes be hard to spot. But firewalls can use deep packet inspection to look for malicious code. Applying deep inspection is therefore advisable for high-priority devices. But firewalls do not ensure total virus protection. Robust anti-malware and antivirus protection are also vital.</li><br>
+            <li><strong>Macros:</strong> Macros are scripts for use with Microsoft Office applications like Word and Excel. When launched, macros can spread well beyond Microsoft apps, compromising entire networks. They are usually transmitted as email attachments. So if firewalls have email filters, they provide a degree of protection.</li>
+        </ul>
+        <p>Firewall filtering alone is not a solution. It is just part of an effective network security system including virus scanners, encryption, and IAM systems.</p>
+    </main>
+    
+    <aside class="sidebar">
+        <section class="toc">
+            <h2>Table Of Content</h2>
+            <ol>
+                <li><a href="#key-takeaways">Key Takeaways</a></li>
+                <li><a href="#understanding-firewalls">Understanding Firewalls</a></li>
+                <li><a href="#what-is-a-firewall">What is a Firewall?</a></li>
+                <li><a href="#filtering-techniques">Filtering Techniques</a>
+                    <ul>
+                        <li><a href="#packet-filtering">Packet Filtering</a></li>
+                        <li><a href="#stateful-inspection">Stateful Inspection</a></li>
+                        <li><a href="#proxy-services">Proxy Services</a></li>
+                        <li><a href="#ngfw">NGFW</a></li>
+                    </ul>
+                </li>
+                <li><a href="#threat-protection">Threat Protection</a></li>
+            </ol>
+            <hr style="border: 0; border-top: 1px solid var(--color-border-muted); margin: 20px 0;">
+            <p>Source: <a href="https://nordlayer.com/learn/firewall/how-firewall-work/" target="_blank">Nordlayer</a></p>
+            <a class="btt" href="#top">↑ Back to Top</a><br>
+            <a class="btt" href="index.html">← Back to Home</a>
+        </section>
+    </aside>
 
-    <h2 id="proxy-services">Proxy services</h2>
-    <p>Also called application level gateways, a proxy service firewall stands between network devices and the external internet. A proxy firewall is a separate gateway with a distinct IP address. This means that until proxy firewalls approve access, data has no direct connection with internal assets.</p>
-    <p>Proxy firewalls apply handshake and packet filtering as described above. <strong>But they may add deep packet inspection (DPI)</strong> to the process. DPI examines data payloads within packets. This can expose infected packets and neutralize malware that would otherwise pass unnoticed.</p>
+</div> <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.querySelector('.search-input');
+    const content = document.querySelector('.markdown-body');
+    const searchableElements = content.querySelectorAll('h1, h2, h3, p');
+    
+    // Create results container
+    const resultsContainer = document.createElement('div');
+    resultsContainer.id = 'search-results';
+    searchInput.parentElement.appendChild(resultsContainer);
 
-    <h2 id="nat-filtering">NAT filtering</h2>
-    <p>Network Address Translation (NAT) firewalls are another option when filtering traffic. In NAT systems all network devices connect to a single gateway. Local devices have separate private IP addresses, but they share the IP address of the gateway.</p>
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        resultsContainer.innerHTML = '';
+        
+        if (!query) return;
 
-    <h2 id="ngfw">Next-generation firewalls</h2>
-    <p>Next-generation firewalls (NGFWs) are the most up-to-date option when defending a private network. They are often called multilayer firewalls as they <strong>inspect traffic between OSI layers 2-7.</strong></p>
+        const matches = Array.from(searchableElements).filter(el => 
+            el.textContent.toLowerCase().includes(query)
+        );
 
-    <h1 id="threat-protection">How exactly does a firewall protect data?</h1>
-    <p>Data on your private network requires protection from external attackers. This applies whether data is held locally on company servers or stored in cloud containers. And the first step in protecting data is adding firewall filters to screen out malicious actors.</p>
+        matches.forEach(match => {
+            const div = document.createElement('div');
+            div.className = 'search-result-item';
+            
+            // Determine a title for the result
+            const title = match.tagName.startsWith('H') ? match.textContent : "Content match";
+            const snippet = match.textContent.substring(0, 50) + "...";
+            
+            div.innerHTML = `<strong>${title}</strong><br><small>${snippet}</small>`;
+            
+            div.addEventListener('click', () => {
+                match.scrollIntoView({ behavior: 'smooth' });
+                searchInput.value = '';
+                resultsContainer.innerHTML = '';
+            });
+            
+            resultsContainer.appendChild(div);
+        });
+    });
 
-    <ul>
-        <li><strong>Denial-of-Service:</strong> Distributed denial-of-service attacks mobilize huge quantities of bots to flood targeted systems with network traffic. Bots continue to make access requests while hiding their original identity. Servers cannot verify the connection, but they continue to send authentication requests. Eventually, the target is taken offline. Smart firewalls protect your network by detecting DDoS floods before the attack becomes critical. This reduces the risk of downtime and damage to vital network resources.</li><br>
-        <li><strong>Spam:</strong>Spam can also flood network users with useless messages or - worse - malicious software. These links can lead to malware infections and ransomware attacks. Both threats can cripple network operations. A good firewall will filter spam from legitimate traffic and screen emails before users can click dangerous links.</li><br>
-        <li><strong>Backdoors:</strong> Important network applications or operating systems may include backdoors that allow unauthorized access. These loopholes can lead to application hijacking and data theft. Companies often fail to apply patches as backdoors are identified. Firewalls defend your network by screening out unverified users. Hackers will have to work far harder to gain access to compromised apps.</li><br>
-        <li><strong>Remote hijackings:</strong>Sometimes, third parties may gain remote access to network devices. This is usually a legitimate task for maintenance purposes. But hackers can also gain remote access via partner organizations or poorly secured remote work tools. Firewalls check device data, adding an extra set of filters. This should make it harder to capture devices remotely.</li><br>
-        <li><strong>Viruses:</strong> Viruses arrive on an internal network via conventional traffic and can sometimes be hard to spot. But firewalls can use deep packet inspection to look for malicious code. Applying deep inspection is therefore advisable for high-priority devices. But firewalls do not ensure total virus protection. Robust anti-malware and antivirus protection are also vital.</li><br>
-        <li><strong>Macros:</strong> Macros are scripts for use with Microsoft Office applications like Word and Excel. When launched, macros can spread well beyond Microsoft apps, compromising entire networks. They are usually transmitted as email attachments. So if firewalls have email filters, they provide a degree of protection.</li>
-    </ul>
-    <p>Firewall filtering alone is not a solution. It is just part of an effective network security system including virus scanners, encryption, and IAM systems.</p>
-</main>
-
-<aside class="sidebar">
-    <section class="toc">
-        <h2>Table Of Content</h2>
-        <ol>
-            <li><a href="#key-takeaways">Key Takeaways</a></li>
-            <li><a href="#understanding-firewalls">Understanding Firewalls</a></li>
-            <li><a href="#what-is-a-firewall">What is a Firewall?</a></li>
-            <li><a href="#filtering-techniques">Filtering Techniques</a>
-                <ul>
-                    <li><a href="#packet-filtering">Packet Filtering</a></li>
-                    <li><a href="#stateful-inspection">Stateful Inspection</a></li>
-                    <li><a href="#proxy-services">Proxy Services</a></li>
-                    <li><a href="#ngfw">NGFW</a></li>
-                </ul>
-            </li>
-            <li><a href="#threat-protection">Threat Protection</a></li>
-        </ol>
-        <hr style="border: 0; border-top: 1px solid var(--color-border-muted); margin: 20px 0;">
-        <p>Source: <a href="https://nordlayer.com/learn/firewall/how-firewall-work/" target="_blank">Nordlayer</a></p>
-        <a class="btt" href="#top">↑ Back to Top</a><br>
-        <a class="btt" href="index.html">← Back to Home</a>
-    </section>
-</aside>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    // Close results when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!searchInput.contains(e.target) && !resultsContainer.contains(e.target)) {
+            resultsContainer.innerHTML = '';
+        }
+    });
+});
+</script>
 </body>
 </html>
