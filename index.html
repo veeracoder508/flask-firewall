@@ -9,182 +9,257 @@
 </head>
 <body id="top">
 
-<main class="markdown-body">
-    <h1 id="flask-firewall-ffw-v001">flask-firewall (FFw) v0.0.1</h1>
-    <p>It is a simple firewall for a flask application. You can use it in you flask application.</p>
+<nav class="top-nav">
+    <div class="nav-brand">
+        <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="24" height="24" fill="currentColor" style="color: var(--color-accent-fg);">
+            <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13Z"></path>
+        </svg>
+        <span>DevDocs</span>
+    </div>
 
-    <h1 id="what-is-a-firewall">What is a firewall?</h1>
-    <p>First going into <strong>FFw</strong>, we first learn what is a firewall. A firewall is a network security system, either hardware or software, that monitors and controls incoming and outgoing network traffic, acting as a digital barrier between a trusted internal network and untrusted external networks like the internet, blocking or allowing data packets based on predefined security rules to prevent unauthorized access and malicious activity. It functions like a security guard, checking data (packets) against rules to decide if they can pass, protecting networks from hackers, viruses, and other threats. 
-    <a href="firewall.html">for more details about firewall ⤴</a></p>
+    <div class="nav-brand">
+        <select id="fruits" name="fruits">
+            <option value="apple">v0.0.1</option>
+        </select>
+    </div>
 
-    <h2 id="how-a-firewall-works">How a firewall works</h2>
-    <ol>
-        <li><strong>Inspects traffic:</strong> Firewalls examine data packets traveling between networks.</li>
-        <li><strong>Applies rules:</strong> They compare packet information (like source/destination IP, port, protocol) against a set of security rules.</li>
-        <li><strong>Blocks or allows:</strong> Based on the rules, they permit safe traffic and block harmful or unauthorized traffic.</li>
-    </ol>
+    <div>
+        <span>flask-firewall»</span>
+    </div>
 
-    <h2 id="types-of-firewalls">Types of Firewalls</h2>
-    <ul>
-        <li><strong>Hardware Firewalls:</strong> Physical devices, often built into home routers, protecting entire networks.</li>
-        <li><strong>Software Firewalls:</strong> Programs installed on individual devices (like Windows Defender), protecting that specific host.</li>
-        <li><strong>Next-Generation Firewalls (NGFW):</strong> Advanced firewalls with features like deep packet inspection, intrusion prevention, and application control.</li>
-        <li><strong>Web Application Firewalls (WAFs):</strong> Protect specific web applications from web-based attacks like SQL injection.</li>
-    </ul>
+    <div class="nav-search">
+        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#050505"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
+        <input type="text" class="search-input" placeholder="Search documentation...">
+    </div>
+</nav>
 
-    <h1 id="setting-up-ffw">Setting up FFw</h1>
+<div class="content-wrapper">
+
+    <main class="markdown-body">
+        <h1 id="flask-firewall-ffw-v001">flask-firewall (FFw) v0.0.1</h1>
+        <p>It is a simple firewall for a flask application. You can use it in you flask application.</p>
     
-    <h2 id="geting-started">getting started</h2>
-    <p>To install the firewall there are two ways of doing it.</p>
-    <p>method one is by downloading it from github by using git.</p>
-<pre><code class="language-bash"># for all os
+        <h1 id="what-is-a-firewall">What is a firewall?</h1>
+        <p>First going into <strong>FFw</strong>, we first learn what is a firewall. A firewall is a network security system, either hardware or software, that monitors and controls incoming and outgoing network traffic, acting as a digital barrier between a trusted internal network and untrusted external networks like the internet, blocking or allowing data packets based on predefined security rules to prevent unauthorized access and malicious activity. It functions like a security guard, checking data (packets) against rules to decide if they can pass, protecting networks from hackers, viruses, and other threats. 
+        <a href="firewall.html">for more details about firewall ⤴</a></p>
+    
+        <h2 id="how-a-firewall-works">How a firewall works</h2>
+        <ol>
+            <li><strong>Inspects traffic:</strong> Firewalls examine data packets traveling between networks.</li>
+            <li><strong>Applies rules:</strong> They compare packet information (like source/destination IP, port, protocol) against a set of security rules.</li>
+            <li><strong>Blocks or allows:</strong> Based on the rules, they permit safe traffic and block harmful or unauthorized traffic.</li>
+        </ol>
+    
+        <h2 id="types-of-firewalls">Types of Firewalls</h2>
+        <ul>
+            <li><strong>Hardware Firewalls:</strong> Physical devices, often built into home routers, protecting entire networks.</li>
+            <li><strong>Software Firewalls:</strong> Programs installed on individual devices (like Windows Defender), protecting that specific host.</li>
+            <li><strong>Next-Generation Firewalls (NGFW):</strong> Advanced firewalls with features like deep packet inspection, intrusion prevention, and application control.</li>
+            <li><strong>Web Application Firewalls (WAFs):</strong> Protect specific web applications from web-based attacks like SQL injection.</li>
+        </ul>
+    
+        <h1 id="setting-up-ffw">Setting up FFw</h1>
+        
+        <h2 id="geting-started">getting started</h2>
+        <p>To install the firewall there are two ways of doing it.</p>
+        <p>method one is by downloading it from github by using git.</p>
+    <pre><code class="language-bash"># for all os
 $ git clone https://github.com/veeracoder508/flask-firewall.git</code></pre>
-
-    <p>method two is by using uv or pip</p>
-<pre><code class="language-bash"># for windows
+    
+        <p>method two is by using uv or pip</p>
+    <pre><code class="language-bash"># for windows
 >>> pip install flask-firewall # using pip
 >>> uv add flask-firewall # using uv
-
+    
 # for linux/mac
 $ pip3 install flask-firewall
 $ uv add flask-firewall</code></pre>
-
-    <h2 id="setting-up-the-firewall-in-flask">Setting up the Firewall in flask</h2>
-    <p>After installation we need to create a flask app.</p>
-<pre><code class="language-python">from flask import Flask
-
+    
+        <h2 id="setting-up-the-firewall-in-flask">Setting up the Firewall in flask</h2>
+        <p>After installation we need to create a flask app.</p>
+    <pre><code class="language-python">from flask import Flask
+    
 app = Flask(__name__)
-
+    
 @app.route('/')
 def index():
     return "veera"
-
+    
 if __name__ == "__main__":
     app.run(host="0.0.0.0")</code></pre>
-
-    <h2 id="the-setup">the setup</h2>
-    <p>in this simple flask app we can import our flask-firewall module and initilize our firewall for the flask app.</p>
-<pre><code class="language-python">from flask import Flask
+    
+        <h2 id="the-setup">the setup</h2>
+        <p>in this simple flask app we can import our flask-firewall module and initilize our firewall for the flask app.</p>
+    <pre><code class="language-python">from flask import Flask
 from flask_firewall import Firewall, Rule
-
+    
 app = Flask(__name__)
 fw = Firewall(app)
-
+    
 fw.engine.rules = [
     Rule(action=fw.ALLOW, proto=fw.TCP, dport=80, src_cidr=fw.ANY, dst_cidr=fw.ANY, desc="Permits HTTP"),
     Rule(action=fw.DROP, proto=fw.TCP, dport=443, src_cidr=fw.ANY, dst_cidr=fw.ANY, desc="Permits HTTPS"),
     Rule(action=fw.DROP, proto=fw.TCP, dport=23, src_cidr=fw.ANY, dst_cidr="10.0.0.0/24", desc="Blocks Telnet to a subnet"),
     Rule(action=fw.ALLOW, proto=fw.TCP, dport=22, src_cidr="192.168.1.10", dst_cidr=fw.ANY, desc="Only allows SSH from one specific IP"),
 ]
-
+    
 @app.route('/')
 @fw.firewall(port=5000)
 def index():
     return "veera"
-
+    
 if __name__ == "__main__":
     app.run(host=5000)</code></pre>
-
-    <h3 id="explanation-of-the-setup">explanation of the setup</h3>
-    <p>in the above program we see that first we see that we are importing the <code>flask_firewall</code> module that we installed. secondly we are initialising the firewall by using <code>fw = Firewall(app)</code>, we give a parameter <code>flask_instance</code> of type <code>Flask</code> whick is the flask application we are initialising the firewall for. Next we are setting up the rules for the firewall in <code>fw.engine.rules</code> which contain all the rules for the firewall. We use the <code>Rule()</code> object for a instance for a single rule.</p>
-
-<pre><code class="language-python">Rule(action=fw.DROP, proto=fw.TCP, dport=23, src_cidr=fw.ANY, dst_cidr="10.0.0.0/24", desc="Blocks Telnet to a subnet")</code></pre>
-
-    <p>In the <code>Rule()</code> object there are 6 attributes:</p>
-    <ul class="rule-list">
-        <li><code>action</code>: what should do if the packet and the rule matches(ALLOW/DROP)</li>
-        <li><code>proto</code>: The portocol of the packet for the rule can be 'ANY'</li>
-        <li><code>dport</code>: the destination port for the rule</li>
-        <li><code>src_cidr</code>: the source cidr for the rule can be 'ANY'</li>
-        <li><code>dst_cidr</code>: the destination cidr for the rule can be 'ANY'</li>
-        <li><code>desc</code>: the description for the rule for readability</li>
-    </ul>
-
-    <h2 id="how-to-work-with-the-logs">how to work with the logs?</h2>
-    <p>After youn run the application, a log file will nbe created <code>&lt;name of flask app&gt;_firewall.log</code>. In the log file you can see all the requests and how it is processed by the firewall.<br>
-    If no matching allow rule.</p>
-<pre><code class="language-none">2026-01-11 10:52:46,996 [WARNING] ACL DROP: [TCP] 192.168.29.83:62075 -> 127.0.0.1:5000 - No matching allow rule. 
+    
+        <h3 id="explanation-of-the-setup">explanation of the setup</h3>
+        <p>in the above program we see that first we see that we are importing the <code>flask_firewall</code> module that we installed. secondly we are initialising the firewall by using <code>fw = Firewall(app)</code>, we give a parameter <code>flask_instance</code> of type <code>Flask</code> whick is the flask application we are initialising the firewall for. Next we are setting up the rules for the firewall in <code>fw.engine.rules</code> which contain all the rules for the firewall. We use the <code>Rule()</code> object for a instance for a single rule.</p>
+    
+    <pre><code class="language-python">Rule(action=fw.DROP, proto=fw.TCP, dport=23, src_cidr=fw.ANY, dst_cidr="10.0.0.0/24", desc="Blocks Telnet to a subnet")</code></pre>
+    
+        <p>In the <code>Rule()</code> object there are 6 attributes:</p>
+        <ul class="rule-list">
+            <li><code>action</code>: what should do if the packet and the rule matches(ALLOW/DROP)</li>
+            <li><code>proto</code>: The portocol of the packet for the rule can be 'ANY'</li>
+            <li><code>dport</code>: the destination port for the rule</li>
+            <li><code>src_cidr</code>: the source cidr for the rule can be 'ANY'</li>
+            <li><code>dst_cidr</code>: the destination cidr for the rule can be 'ANY'</li>
+            <li><code>desc</code>: the description for the rule for readability</li>
+        </ul>
+    
+        <h2 id="how-to-work-with-the-logs">how to work with the logs?</h2>
+        <p>After youn run the application, a log file will nbe created <code>&lt;name of flask app&gt;_firewall.log</code>. In the log file you can see all the requests and how it is processed by the firewall.<br>
+        If no matching allow rule.</p>
+    <pre><code class="language-none">2026-01-11 10:52:46,996 [WARNING] ACL DROP: [TCP] 192.168.29.83:62075 -> 127.0.0.1:5000 - No matching allow rule. 
 2026-01-11 10:52:46,997 [ERROR] Firewall Processing Error: 403 Forbidden: Access denied by Firewall.</code></pre>
-
-    <p>If matching allow rule.</p>
-<pre><code class="language-none">2026-01-11 11:07:39,364 [INFO] ACL ALLOW: [TCP] 127.0.0.1:62286 -> 127.0.0.1:5000</code></pre>
-
-    <h2 id="how-to-create-a-monitor-for-the-firewall">how to create a monitor for the firewall?</h2>
-    <p>You can create a monitor to monitor the logs and the rules and automate stuff. You can do it by tweaking the last code to have a monitor.</p>
-<pre><code class="language-python">from flask import Flask
+    
+        <p>If matching allow rule.</p>
+    <pre><code class="language-none">2026-01-11 11:07:39,364 [INFO] ACL ALLOW: [TCP] 127.0.0.1:62286 -> 127.0.0.1:5000</code></pre>
+    
+        <h2 id="how-to-create-a-monitor-for-the-firewall">how to create a monitor for the firewall?</h2>
+        <p>You can create a monitor to monitor the logs and the rules and automate stuff. You can do it by tweaking the last code to have a monitor.</p>
+    <pre><code class="language-python">from flask import Flask
 from flask_firewall import Firewall, Rule
 from flask_firewall.monitor import SentinelMonitor
-
+    
 app = Flask(__name__)
 fw = Firewall(app)
-
+    
 fw.engine.rules = [
     Rule(action=fw.ALLOW, proto=fw.TCP, dport=80, src_cidr=fw.ANY, dst_cidr=fw.ANY, desc="Permits HTTP"),
     Rule(action=fw.DROP, proto=fw.TCP, dport=443, src_cidr=fw.ANY, dst_cidr=fw.ANY, desc="Permits HTTPS"),
     Rule(action=fw.DROP, proto=fw.TCP, dport=23, src_cidr=fw.ANY, dst_cidr="10.0.0.0/24", desc="Blocks Telnet to a subnet"),
     Rule(action=fw.ALLOW, proto=fw.TCP, dport=22, src_cidr="192.168.1.10", dst_cidr=fw.ANY, desc="Only allows SSH from one specific IP"),
 ]
-
+    
 monitor = SentinelMonitor(fw)
-
+    
 @app.route('/')
 @fw.firewall(port=5000)
 def index():
     return "veera"
-
+    
 if __name__ == "__main__":
     create_monitor(monitor)
     app.run(host=5000)</code></pre>
-    
-    <div class="alert alert-important">
-        <div class="alert-title">
-            <svg style="margin-right: 8px;" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" fill="currentColor"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1.5a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>
-            IMPORTANT
+        
+        <div class="alert alert-important">
+            <div class="alert-title">
+                <svg style="margin-right: 8px;" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true" fill="currentColor"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1.5a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>
+                IMPORTANT
+            </div>
+            <p>the instance for the <code>SentinelMonitor</code> must be <code>monitor</code> for the monitor to work properly.</p>
         </div>
-        <p>the instance for the <code>SentinelMonitor</code> must be <code>monitor</code> for the monitor to work properly.</p>
-    </div>
-
-    <p>after running the application with the updated code, it should create a flie <code>&lt;name of flask app&gt;_monitor.py</code> in the same folder as the flask app.</p>
-<pre><code class="language-python"># FlaskFirewall Monitor (FFWM)
+    
+        <p>after running the application with the updated code, it should create a flie <code>&lt;name of flask app&gt;_monitor.py</code> in the same folder as the flask app.</p>
+    <pre><code class="language-python"># FlaskFirewall Monitor (FFWM)
 from {name of flask app} import monitor
 monitor.mainloop()</code></pre>
-<p>You can run the file to open the monitor</p>
-</main>
+    <p>You can run the file to open the monitor</p>
+    </main>
+    
+    <aside class="sidebar">
+        <section class="toc">
+            <h2>Table Of Content</h2>
+            <ol>
+                <li><a href="#flask-firewall-ffw-v001"><em>Introduction</em> - flask-firewall v0.0.1</a></li>
+                <li><a href="#what-is-a-firewall"><em>introduction to firewall</em> - what is a firewall?</a>
+                    <ul>
+                        <li><a href="#how-a-firewall-works">How a firewall works</a></li>
+                        <li><a href="#types-of-firewalls">Types of Firewalls</a></li>
+                    </ul>
+                </li>
+                <li><a href="#setting-up-ffw"><em>Setting up</em> - Setting up FFW</a>
+                    <ul>
+                        <li><a href="#geting-started"><em>getting started</em></a></li>
+                        <li><a href="#setting-up-the-firewall-in-flask"><em>Setting up the Firewall in flask</em></a></li>
+                        <li><a href="#the-setup"><em>the setup</em></a>
+                            <ul class="sec">
+                                <li><a href="#explanation-of-the-setup"><em>explanation of the setup</em></a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#how-to-work-with-the-logs"><em>how to work with the logs?</em></a></li>
+                        <li><a href="#how-to-create-a-monitor-for-the-firewall"><em>how to create a monitor for the firewall?</em></a></li>
+                    </ul>
+                </li>
+            </ol>
+            <hr style="border: 0; border-top: 1px solid var(--color-border-muted); margin: 20px 0;">
+            <a class="btt" href="#top">↑ Back to Top</a>
+            <p>credits to <a href="https://github.com/veeracoder508" target="_blank">veeracoder508</a></p>
+            <p>Github: <a href="https://github.com/veeracoder508/flask-firewall" target="_blank">veeracoder508/flask-firewall</a></p>
+        </section>
+    </aside>
 
-<aside class="sidebar">
-    <section class="toc">
-        <h2>Table Of Content</h2>
-        <ol>
-            <li><a href="#flask-firewall-ffw-v001"><em>Introduction</em> - flask-firewall v0.0.1</a></li>
-            <li><a href="#what-is-a-firewall"><em>introduction to firewall</em> - what is a firewall?</a>
-                <ul>
-                    <li><a href="#how-a-firewall-works">How a firewall works</a></li>
-                    <li><a href="#types-of-firewalls">Types of Firewalls</a></li>
-                </ul>
-            </li>
-            <li><a href="#setting-up-ffw"><em>Setting up</em> - Setting up FFW</a>
-                <ul>
-                    <li><a href="#geting-started"><em>getting started</em></a></li>
-                    <li><a href="#setting-up-the-firewall-in-flask"><em>Setting up the Firewall in flask</em></a></li>
-                    <li><a href="#the-setup"><em>the setup</em></a>
-                        <ul class="sec">
-                            <li><a href="#explanation-of-the-setup"><em>explanation of the setup</em></a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#how-to-work-with-the-logs"><em>how to work with the logs?</em></a></li>
-                    <li><a href="#how-to-create-a-monitor-for-the-firewall"><em>how to create a monitor for the firewall?</em></a></li>
-                </ul>
-            </li>
-        </ol>
-        <hr style="border: 0; border-top: 1px solid var(--color-border-muted); margin: 20px 0;">
-        <a class="btt" href="#top">↑ Back to Top</a>
-        <p>credits to <a href="https://github.com/veeracoder508" target="_blank">veeracoder508</a></p>
-        <p>Github: <a href="https://github.com/veeracoder508/flask-firewall" target="_blank">veeracoder508/flask-firewall</a></p>
-    </section>
-</aside>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+</div> <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.querySelector('.search-input');
+    const content = document.querySelector('.markdown-body');
+    const searchableElements = content.querySelectorAll('h1, h2, h3, p');
+    
+    // Create results container
+    const resultsContainer = document.createElement('div');
+    resultsContainer.id = 'search-results';
+    searchInput.parentElement.appendChild(resultsContainer);
+
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        resultsContainer.innerHTML = '';
+        
+        if (!query) return;
+
+        const matches = Array.from(searchableElements).filter(el => 
+            el.textContent.toLowerCase().includes(query)
+        );
+
+        matches.forEach(match => {
+            const div = document.createElement('div');
+            div.className = 'search-result-item';
+            
+            // Determine a title for the result
+            const title = match.tagName.startsWith('H') ? match.textContent : "Content match";
+            const snippet = match.textContent.substring(0, 50) + "...";
+            
+            div.innerHTML = `<strong>${title}</strong><br><small>${snippet}</small>`;
+            
+            div.addEventListener('click', () => {
+                match.scrollIntoView({ behavior: 'smooth' });
+                searchInput.value = '';
+                resultsContainer.innerHTML = '';
+            });
+            
+            resultsContainer.appendChild(div);
+        });
+    });
+
+    // Close results when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!searchInput.contains(e.target) && !resultsContainer.contains(e.target)) {
+            resultsContainer.innerHTML = '';
+        }
+    });
+});
+</script>
 </body>
 </html>
