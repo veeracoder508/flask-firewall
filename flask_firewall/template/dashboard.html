@@ -1,0 +1,123 @@
+<!-- Copyright 2026 R A Veeraragavan (refer __init__.py) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentinel SOC Web</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0d1117; color: #c9d1d9; font-family: 'Segoe UI', sans-serif; }
+        .card { background-color: #161b22; border: 1px solid #30363d; }
+        .log-entry { font-family: 'Consolas', monospace; border-bottom: 1px solid #21262d; }
+        .text-accent { color: #58a6ff; }
+        .text-success { color: #3fb950; }
+        .text-danger { color: #f85149; }
+    </style>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body class="p-6">
+    <div class="flex justify-between items-center mb-8 border-b border-gray-700 pb-4">
+        <h1 class="text-2xl font-bold text-accent">SENTINEL SOC <span class="text-gray-500">//</span> {{ server_name.upper() }}</h1>
+        <div id="status" class="text-xs bg-green-900 text-green-300 px-3 py-1 rounded-full">LIVE CONNECTION</div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+        <div class="card p-4 rounded-lg text-center">
+            <p class="text-gray-400 text-sm">TOTAL ALLOWED</p>
+            <p id="stat-allowed" class="text-3xl font-bold text-success">0</p>
+        </div>
+        <div class="card p-4 rounded-lg text-center">
+            <p class="text-gray-400 text-sm">TOTAL DROPPED</p>
+            <p id="stat-dropped" class="text-3xl font-bold text-danger">0</p>
+        </div>
+        <div class="card p-4 rounded-lg text-center">
+            <p class="text-gray-400 text-sm">CPU LOAD</p>
+            <p id="stat-cpu" class="text-3xl font-bold text-accent">0%</p>
+        </div>
+        <div class="card p-4 rounded-lg text-center">
+            <p class="text-gray-400 text-sm">MEMORY</p>
+            <p id="stat-mem" class="text-3xl font-bold text-accent">0 MB</p>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="card rounded-lg overflow-hidden">
+            <div class="bg-gray-800 px-4 py-2 text-sm font-bold">LIVE TRAFFIC LOGS <a href="{{ url_for('full_logs_page') }}" class="text-xs text-gray-400 hover:text-white">View All</a></div>
+            <div id="log-container" class="h-96 overflow-y-auto p-4 text-sm space-y-1"></div>
+        </div>
+
+        <div class="card rounded-lg overflow-hidden">
+            <div class="bg-gray-800 px-4 py-2 text-sm font-bold">ACTIVE SECURITY POLICIES <a href="{{ url_for('policies_page') }}" class="text-xs text-gray-400 hover:text-white">View All</a></div>
+            <table class="w-full text-left text-sm">
+                <thead class="bg-gray-900 text-gray-400">
+                    <tr>
+                        <th class="p-3">ID</th>
+                        <th class="p-3">Description</th>
+                        <th class="p-3">Source</th>
+                        <th class="p-3">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="rules-table"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const socket = io();
+
+        // Connection Handling
+        socket.on('connect', () => {
+            document.getElementById('status').innerText = "LIVE CONNECTION";
+            document.getElementById('status').className = "text-xs bg-green-900 text-green-300 px-3 py-1 rounded-full";
+        });
+
+        socket.on('disconnect', () => {
+            document.getElementById('status').innerText = "DISCONNECTED";
+            document.getElementById('status').className = "text-xs bg-red-900 text-red-300 px-3 py-1 rounded-full";
+        });
+
+        // Live Stats Update
+        socket.on('stats_update', function(stats) {
+            document.getElementById('stat-allowed').innerText = stats.allowed;
+            document.getElementById('stat-dropped').innerText = stats.dropped;
+            document.getElementById('stat-cpu').innerText = stats.cpu;
+            document.getElementById('stat-mem').innerText = stats.memory;
+            updateLogs(); 
+        });
+
+        async function updateLogs() {
+            try {
+                const logRes = await fetch('/api/logs');
+                const logs = await logRes.json();
+                const logContainer = document.getElementById('log-container');
+                logContainer.innerHTML = logs.map(line => {
+                    let color = line.includes('ALLOW') ? 'text-success' : (line.includes('DROP') ? 'text-danger' : '');
+                    return `<div class="log-entry py-1 ${color}">${line}</div>`;
+                }).join('');
+                logContainer.scrollTop = logContainer.scrollHeight;
+            } catch (e) { console.error("Log fetch error", e); }
+        }
+
+        async function loadRules() {
+            try {
+                const ruleRes = await fetch('/api/rules');
+                const rules = await ruleRes.json();
+                document.getElementById('rules-table').innerHTML = rules.map(r => `
+                    <tr class="border-b border-gray-800">
+                        <td class="p-3">${r.id}</td>
+                        <td class="p-3">${r.desc}</td>
+                        <td class="p-3 font-mono">${r.src}</td>
+                        <td class="p-3 ${r.action === 'ALLOW' ? 'text-success' : 'text-danger'} font-bold">${r.action}</td>
+                    </tr>
+                `).join('');
+            } catch (e) { console.error("Rules fetch error", e); }
+        }
+
+        // Initial load
+        loadRules();
+        updateLogs();
+    </script>
+</body>
+</html>
