@@ -1,5 +1,8 @@
 # Copyright 2026 R A Veeraragavan (Refere firewall.py)
-"""
+"""This module contains the objects for all the firewall object
+objects:
+    - `Packet`
+    - `Rule`
 """
 
 
@@ -16,7 +19,7 @@ class Packet:
         >>> print(pkt)
         [TCP] 127.0.0.1:5000 -> 8.8.8.8:80
     """
-    def __init__(self, src: ipaddress.IPv4Address | ipaddress.IPv6Address, dst: ipaddress.IPv4Address | ipaddress.IPv6Address, proto: str, sport: int, dport: int, payload: str=""):
+    def __init__(self, src: ipaddress.IPv4Address | ipaddress.IPv6Address, dst: ipaddress.IPv4Address | ipaddress.IPv6Address, proto: str, sport: int, dport: int, payload: str="") -> None:
         """Initialize a Packet object with network flow information.
         
         :param src: The source IP address (IPv4 or IPv6).
@@ -39,7 +42,7 @@ class Packet:
         self.dport = int(dport) if dport else 0
         self.payload = payload
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         """Return a string representation of the packet in flow format.
         
         :return: String representation in the format "[PROTO] src:sport -> dst:dport".
@@ -58,7 +61,7 @@ class Rule:
         >>> allow_web = Rule("0.0.0.0/0", "0.0.0.0/0", proto="TCP", dport=80, action="ALLOW", desc="Allow HTTP")
         >>> deny_telnet = Rule("0.0.0.0/0", "0.0.0.0/0", proto="TCP", dport=23, action="DROP", desc="Block Telnet")
     """
-    def __init__(self, src_cidr="ANY", dst_cidr="ANY", proto="ANY", dport="ANY", action="DROP", desc=""):
+    def __init__(self, src_cidr="ANY", dst_cidr="ANY", proto="ANY", dport="ANY", action="DROP", desc="") -> None:
         """Initialize a firewall rule.
         
         :param src_cidr: Source CIDR block (e.g., '192.168.1.0/24') or 'ANY' for all sources.
@@ -102,7 +105,7 @@ class Rule:
             return False
         return True
     
-    def to_tuple(self, index):
+    def to_tuple(self, index) -> tuple:
         """Convert the rule to a tuple format for display or serialization.
         
         Returns a tuple with index, description, source CIDR, and action.
@@ -119,3 +122,7 @@ class Rule:
         :rtype: tuple
         """
         return (index, self.desc, str(self.src_net), self.action)
+    
+class Action:
+    def __init__(self, action: str) -> None:
+        self.action = action
